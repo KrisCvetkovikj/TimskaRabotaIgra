@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Yaniv</string>
-	<string name="app_name">Magarec</string>
-	<string name="Heading">Magarec </string>
-	<string name="DropSelected">Drop Cards</string>
-	<string name="Player">Player</string>
-	<string name="Opponent1">Kiko</string>
-	<string name="Opponent2">Nikolce</string>
-	<string name="Opponent3">Tomce</string>
-	<string name="msg1">You can only pick up cards if it\'s your turn
-	</string>
-	<string name="msg1Heading">Not Your Turn</string>
-	<string name="dialogOkMsg">Got it!</string>
 
-	<string name="PerformYaniv">Yaniv!</string>
-	<string name="NextPlayer">Next!</string>
-	<!-- Strings for the main screen -->
-	<string name="MainScreenTitle"></string>
-	<string name="ResumeButton">Prodolzi</string>
-	<string name="StartButton">Pocni</string>
-	<string name="TutorialButton">Kako se igra</string>
-	<string name="ExitButton">Izlezi</string>
+    <string name="app_name">Magarec</string>
+    <string name="magarec">MAGAREC</string>
+    <string name="title_activity_game_window">GameWindow</string>
+    <string name="game_logo_desc"></string>
+    <string name="newgame">NEW</string>
+    <string name="howto">HOW TO PLAY</string>
+    <string name="about">ABOUT</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_how_to">HowToActivity</string>
+    <string name="title_activity_new_game">NewGameActivity</string>
+    <string name="action_settings">Settings</string>
+	<string name="player1">Player 1</string>
+	<string name="player2">Player 2</string>
+	<string name="player3">Player 3</string>
+	<string name="player4">Player 4</string>
+	<string name="cont">Continue</string>
+	<string name="tap">Tap Fast!</string>
 </resources>
