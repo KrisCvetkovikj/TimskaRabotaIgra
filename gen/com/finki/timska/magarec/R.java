@@ -2159,18 +2159,19 @@ containing a value of this type.
         public static final int activity_game_window=0x7f03001a;
         public static final int activity_how_to=0x7f03001b;
         public static final int activity_new_game=0x7f03001c;
-        public static final int notification_media_action=0x7f03001d;
-        public static final int notification_media_cancel_action=0x7f03001e;
-        public static final int notification_template_big_media=0x7f03001f;
-        public static final int notification_template_big_media_narrow=0x7f030020;
-        public static final int notification_template_lines=0x7f030021;
-        public static final int notification_template_media=0x7f030022;
-        public static final int notification_template_part_chronometer=0x7f030023;
-        public static final int notification_template_part_time=0x7f030024;
-        public static final int select_dialog_item_material=0x7f030025;
-        public static final int select_dialog_multichoice_material=0x7f030026;
-        public static final int select_dialog_singlechoice_material=0x7f030027;
-        public static final int support_simple_spinner_dropdown_item=0x7f030028;
+        public static final int activity_player_time=0x7f03001d;
+        public static final int notification_media_action=0x7f03001e;
+        public static final int notification_media_cancel_action=0x7f03001f;
+        public static final int notification_template_big_media=0x7f030020;
+        public static final int notification_template_big_media_narrow=0x7f030021;
+        public static final int notification_template_lines=0x7f030022;
+        public static final int notification_template_media=0x7f030023;
+        public static final int notification_template_part_chronometer=0x7f030024;
+        public static final int notification_template_part_time=0x7f030025;
+        public static final int select_dialog_item_material=0x7f030026;
+        public static final int select_dialog_multichoice_material=0x7f030027;
+        public static final int select_dialog_singlechoice_material=0x7f030028;
+        public static final int support_simple_spinner_dropdown_item=0x7f030029;
     }
     public static final class menu {
         public static final int new_game=0x7f0c0000;
@@ -2239,6 +2240,8 @@ containing a value of this type.
         public static final int action_settings=0x7f0a001c;
         public static final int app_name=0x7f0a0012;
         public static final int cont=0x7f0a0021;
+        public static final int dummy_button=0x7f0a0024;
+        public static final int dummy_content=0x7f0a0025;
         public static final int game_logo_desc=0x7f0a0015;
         public static final int howto=0x7f0a0017;
         public static final int magarec=0x7f0a0013;
@@ -2259,6 +2262,7 @@ containing a value of this type.
         public static final int title_activity_game_window=0x7f0a0014;
         public static final int title_activity_how_to=0x7f0a001a;
         public static final int title_activity_new_game=0x7f0a001b;
+        public static final int title_activity_player_time=0x7f0a0023;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0b0040;
@@ -2473,7 +2477,7 @@ containing a value of this type.
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b00a9;
         public static final int ButtonBar=0x7f0b0127;
         public static final int ButtonBarButton=0x7f0b0128;
-        public static final int FullscreenActionBarStyle=0x7f0b0129;
+        public static final int FullscreenActionBarStyle=0x7f0b012a;
         public static final int FullscreenTheme=0x7f0b0126;
         public static final int Platform_AppCompat=0x7f0b00ff;
         public static final int Platform_AppCompat_Light=0x7f0b0100;
@@ -2591,6 +2595,7 @@ containing a value of this type.
         public static final int Theme_AppCompat_Light_DialogWhenLarge=0x7f0b00f2;
         public static final int Theme_AppCompat_Light_NoActionBar=0x7f0b00f0;
         public static final int Theme_AppCompat_NoActionBar=0x7f0b00ef;
+        public static final int Theme_Transparent=0x7f0b0129;
         public static final int ThemeOverlay_AppCompat=0x7f0b00fa;
         /**  Theme overlay that replaces the normal control color, which by default is the same as the
          secondary text color, with the primary text color. 

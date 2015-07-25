@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk 
+    <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="22" />
 
@@ -57,6 +57,17 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.finki.timska.magarec.GameWindow" />
+        </activity>
+        <activity
+            android:name=".PlayerTimeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_player_time"
+            android:parentActivityName=".NewGameActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Transparent" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.finki.timska.magarec.NewGameActivity" />
         </activity>
     </application>
 
