@@ -7,13 +7,13 @@
 
 >Кристијан Цветковиќ [**@k1ko**](https://github.com/k1ko)
 
-Томче Киров [**@TomzK**](https://github.com/TomzK)
+>Томче Киров [**@TomzK**](https://github.com/TomzK)
 
-Никола Николовски [**@TheRaptor**](https://github.com/TheRaptor)
+>Никола Николовски [**@TheRaptor**](https://github.com/TheRaptor)
 
-Љупче Ѓорѓиев [**@ljupche**](https://github.com/ljupche)
+>Љупче Ѓорѓиев [**@ljupche**](https://github.com/ljupche)
 
-Дарко Ѓорѓиев [**@darko131228**](https://github.com/darko131228)
+>Дарко Ѓорѓиев [**@darko131228**](https://github.com/darko131228)
 
 
 [http://finki.ukim.mk/mk/home](http://finki.ukim.mk/mk/home)
