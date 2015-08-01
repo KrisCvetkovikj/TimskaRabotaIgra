@@ -5,12 +5,15 @@
 
 Учесници:
 
-Кристијан Цветковиќ @k1ko
+>Кристијан Цветковиќ [**@k1ko**](https://github.com/k1ko)
 
-Томче Киров			@TomzK
+Томче Киров [**@TomzK**](https://github.com/TomzK)
 
-Никола Николовски
+Никола Николовски [**@TheRaptor**](https://github.com/TheRaptor)
 
-Љупче Ѓорѓиев
+Љупче Ѓорѓиев [**@ljupche**](https://github.com/ljupche)
 
-Дарко Ѓорѓиев
+Дарко Ѓорѓиев [**@darko131228**](https://github.com/darko131228)
+
+
+[http://finki.ukim.mk/mk/home](http://finki.ukim.mk/mk/home)
