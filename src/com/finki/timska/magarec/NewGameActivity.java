@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class NewGameActivity extends Activity {
 
-	static final int PLAYER_TIME_REQUEST = 1; // The request code
+	static final int PLAYER_TIME_REQUEST = 1010; // The request code
 
 	final TextView[] tvs = new TextView[4];
 	final ImageButton[] imgBtns = new ImageButton[4];
@@ -69,7 +69,7 @@ public class NewGameActivity extends Activity {
 		}
 	}
 
-	int playerTime = -1;
+	float playerTime = -1;
 
 	public void checkCurrentState() throws Exception {
 
@@ -118,17 +118,17 @@ public class NewGameActivity extends Activity {
 		}
 
 		indexWinner = 1;
-
+		Random r = new Random();
 		if (indexWinner == 0) {
-			Random r = new Random();
 
 			// 0 == p2, 1 == p3, 2 == p4
-			int indexLoser[] = { r.nextInt(100), r.nextInt(100), r.nextInt(100) };
-			if (indexLoser[0] <= indexLoser[1]
-					&& indexLoser[0] <= indexLoser[2]) {
+			float indexLoser[] = { (r.nextInt(100) + 1) / 10,
+					(r.nextInt(100) + 1) / 10, (r.nextInt(100) + 1) / 10 };
+			if (indexLoser[0] >= indexLoser[1]
+					&& indexLoser[0] >= indexLoser[2]) {
 				p2Letters++;
-			} else if (indexLoser[1] <= indexLoser[0]
-					&& indexLoser[1] <= indexLoser[2]) {
+			} else if (indexLoser[1] >= indexLoser[0]
+					&& indexLoser[1] >= indexLoser[2]) {
 				p3Letters++;
 			} else {
 				p4Letters++;
@@ -138,48 +138,48 @@ public class NewGameActivity extends Activity {
 		} else if (indexWinner == 1) {
 
 			Intent intent = new Intent(this, PlayerTimeActivity.class);
-			Thread.sleep(1000);
 			startActivityForResult(intent, PLAYER_TIME_REQUEST);
 
-			int indexLoser[] = { new Random().nextInt(100),
-					new Random().nextInt(100) };
+			float indexLoser[] = { (r.nextFloat() * 9) + 1, (r.nextFloat() * 9) + 1 };
 			// indexLoser[0] == p3, indexLoser[1] == p4, indexWinner == p2
-			if (indexLoser[0] <= indexLoser[1] && indexLoser[0] <= playerTime) {
+			if (indexLoser[0] >= indexLoser[1] && indexLoser[0] >= playerTime) {
 				p3Letters++;
-			} else if (indexLoser[1] <= indexLoser[0]
-					&& indexLoser[1] <= playerTime) {
+			} else if (indexLoser[1] >= indexLoser[0]
+					&& indexLoser[1] >= playerTime) {
 				p4Letters++;
 			} else {
 				p1Letters++;
 			}
-			if (playerTime > -1) {
-				wonRound(indexWinner);
-			}
+			Log.d("times",
+					String.format("%.2f %.2f", indexLoser[0], indexLoser[1]));
+			wonRound(indexWinner);
 		} else if (indexWinner == 2) {
-			int playerTime = -1;
+			Intent intent = new Intent(this, PlayerTimeActivity.class);
+			startActivityForResult(intent, PLAYER_TIME_REQUEST);
 
-			int indexLoser[] = { new Random().nextInt(100),
-					new Random().nextInt(100) };
+			float indexLoser[] = { (r.nextInt(100) + 1) / 10,
+					(r.nextInt(100) + 1) / 10 };
 			// indexLoser[0] == p2, indexLoser[1] == p4, indexWinner == p3
-			if (indexLoser[0] <= indexLoser[1] && indexLoser[0] <= playerTime) {
+			if (indexLoser[0] >= indexLoser[1] && indexLoser[0] >= playerTime) {
 				p2Letters++;
-			} else if (indexLoser[1] <= indexLoser[0]
-					&& indexLoser[1] <= playerTime) {
+			} else if (indexLoser[1] >= indexLoser[0]
+					&& indexLoser[1] >= playerTime) {
 				p4Letters++;
 			} else {
 				p1Letters++;
 			}
 			wonRound(indexWinner);
 		} else if (indexWinner == 3) {
-			int playerTime = -1;
+			Intent intent = new Intent(this, PlayerTimeActivity.class);
+			startActivityForResult(intent, PLAYER_TIME_REQUEST);
 
-			int indexLoser[] = { new Random().nextInt(100),
-					new Random().nextInt(100) };
+			float indexLoser[] = { (r.nextInt(100) + 1) / 10,
+					(r.nextInt(100) + 1) / 10 };
 			// indexLoser[0] == p2, indexLoser[1] == p3, indexWinner == p4
-			if (indexLoser[0] <= indexLoser[1] && indexLoser[0] <= playerTime) {
+			if (indexLoser[0] >= indexLoser[1] && indexLoser[0] >= playerTime) {
 				p2Letters++;
-			} else if (indexLoser[1] <= indexLoser[0]
-					&& indexLoser[1] <= playerTime) {
+			} else if (indexLoser[1] >= indexLoser[0]
+					&& indexLoser[1] >= playerTime) {
 				p3Letters++;
 			} else {
 				p1Letters++;
@@ -196,8 +196,9 @@ public class NewGameActivity extends Activity {
 		if (requestCode == PLAYER_TIME_REQUEST) {
 			if (resultCode == RESULT_OK) {
 				try {
-					playerTime = Integer
-							.parseInt(data.getStringExtra("result"));
+					playerTime = Float.parseFloat(data.getStringExtra("pTime"));
+					Log.d("time", String.format("%.2f", playerTime));
+
 				} catch (NumberFormatException nfe) {
 					Log.d("nfe", nfe.getMessage());
 				}
@@ -287,15 +288,15 @@ public class NewGameActivity extends Activity {
 
 		Integer key = -1;
 
-		p2Cards[0] = htCards.get(2130837588);
-		p2Cards[1] = htCards.get(2130837596);
-		p2Cards[2] = htCards.get(2130837592);
-		p2Cards[3] = htCards.get(2130837584);
+		p2Cards[0] = htCards.get(2130837582);
+		p2Cards[1] = htCards.get(2130837574);
+		p2Cards[2] = htCards.get(2130837578);
+		p2Cards[3] = htCards.get(2130837586);
 
-		htCards.remove(2130837588);
-		htCards.remove(2130837596);
-		htCards.remove(2130837592);
-		htCards.remove(2130837584);
+		htCards.remove(2130837582);
+		htCards.remove(2130837574);
+		htCards.remove(2130837578);
+		htCards.remove(2130837586);
 
 		for (int i = 0; i < 4; i++) {
 
@@ -382,6 +383,7 @@ public class NewGameActivity extends Activity {
 				htCards.put(resourceId, s.substring(34));
 			}
 		}
+		System.out.println(htCards.toString());
 	}
 
 	@Override

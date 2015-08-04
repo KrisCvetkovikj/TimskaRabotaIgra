@@ -7,16 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
 public class PlayerTimeActivity extends Activity {
 
 	Handler handler = new Handler();
-	int playerTime = 0;
+	float playerTime = 0;
 	int progressStatus = 0;
 
 	Button tapButton;
@@ -30,38 +30,42 @@ public class PlayerTimeActivity extends Activity {
 		tapButton = (Button) findViewById(R.id.tapBtn);
 		progBar = (ProgressBar) findViewById(R.id.progBar);
 
-		long playerStartTime = System.currentTimeMillis();
-		
+		final long playerStartTime = System.nanoTime();
+		Log.d("pTimeStart", String.format("%d", playerStartTime));
+
 		// Start long running operation in a background thread
 		new Thread(new Runnable() {
 			public void run() {
 				while (progressStatus < 100) {
-					progressStatus += currentProgress;
-				}
+					progressStatus = currentProgress;
 
-				// Update the progress bar
-				handler.post(new Runnable() {
-					public void run() {
-						progBar.setProgress(progressStatus);
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
-				});
-				try {
-					// Sleep for 200 milliseconds.
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+
+					// Update the progress bar
+					handler.post(new Runnable() {
+						public void run() {
+							progBar.setProgress(currentProgress);
+							Log.d("pbarProg",
+									String.format("%d", progBar.getProgress()));
+						}
+					});
+
+					if (progBar.getProgress() >= 100) {
+						playerTime = ((float) (System.nanoTime()  - playerStartTime)) / 1000000000;
+						Log.d("pTimeEnd", String.format("%.2f", playerTime));
+
+						Intent returnIntent = new Intent();
+						returnIntent.putExtra("pTime", Float.toString(playerTime));
+						setResult(RESULT_OK, returnIntent);
+						finish();
+					}
 				}
 			}
 		}).start();
-		
-		if (progBar.getProgress() >= 100) {
-			playerTime = (int) (System.currentTimeMillis() - playerStartTime);
-		}
-
-		Intent returnIntent = new Intent();
-		returnIntent.putExtra("playerTime", playerTime);
-		setResult(RESULT_OK, returnIntent);
-		finish();
 	}
 
 	int currentProgress = 0;
