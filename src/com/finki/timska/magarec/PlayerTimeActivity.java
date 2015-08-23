@@ -2,6 +2,7 @@ package com.finki.timska.magarec;
 
 import java.util.Random;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class PlayerTimeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_player_time);
+		
 
 		tapButton = (Button) findViewById(R.id.tapBtn);
 		progBar = (ProgressBar) findViewById(R.id.progBar);

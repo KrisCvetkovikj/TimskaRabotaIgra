@@ -13,23 +13,14 @@ import android.widget.TextView;
 
 public class HowToActivity extends Activity {
 	
-	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		View decorView = getWindow().getDecorView();
-		// Hide the status bar.
-		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-		decorView.setSystemUiVisibility(uiOptions);
-		// Remember that you should never show the action bar if the
-		// status bar is hidden, so hide that too if necessary.
-		
-		setContentView(R.layout.activity_how_to);
 		getActionBar().hide();
+		setContentView(R.layout.activity_how_to);
 		
 		TextView tvHowTo = (TextView) findViewById(R.id.howToInfo);
-		StringBuilder sb = new StringBuilder("РќР°С‡РёРЅ РЅР° РёРіСЂР°:\n");
+		StringBuilder sb = new StringBuilder("Начин на игра:\n");	
 		
 		tvHowTo.setText(sb.toString());
 		

@@ -92,6 +92,14 @@
             android:layout_marginRight="5dp"
             android:adjustViewBounds="true"
             android:onClick="selectCard" />
+        
+        <ImageButton
+            android:id="@+id/imageButton05"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="5dp"
+            android:adjustViewBounds="true"
+            android:onClick="selectCard" />
     </LinearLayout>
 
     <ImageView

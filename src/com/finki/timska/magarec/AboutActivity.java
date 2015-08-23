@@ -13,29 +13,20 @@ import android.widget.TextView;
 @SuppressLint("NewApi")
 public class AboutActivity extends Activity {
 
-	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		View decorView = getWindow().getDecorView();
-		// Hide the status bar.
-		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-		decorView.setSystemUiVisibility(uiOptions);
-		// Remember that you should never show the action bar if the
-		// status bar is hidden, so hide that too if necessary.
-		
-		setContentView(R.layout.activity_about);
 		getActionBar().hide();
+		setContentView(R.layout.activity_about);
 
 
 		TextView tvAbout = (TextView) findViewById(R.id.aboutInfo);
-		StringBuilder sb = new StringBuilder("РђРІС‚РѕСЂРё:\n");
-		sb.append("РљСЂРёСЃС‚РёСР°РЅ Р¦РІРµС‚РєРѕРІРёСњ\n");
-		sb.append("РўРѕРјС‡Рµ РљРёСЂРѕРІ\n");
-		sb.append("РќРёРєРѕР»Р° РќРёРєРѕР»РѕРІСЃРєРё\n");
-		sb.append("Р”Р°СЂРєРѕ РѓРѕСЂС“РёРµРІ\n");
-		sb.append("Р‰СѓРїС‡Рµ РѓРѕСЂС“РёРµРІ\n");
+		StringBuilder sb = new StringBuilder("Автори:\n");
+		sb.append("Кристијан Цветковиќ\n");
+		sb.append("Томче Киров\n");
+		sb.append("Никола Николовски\n");
+		sb.append("Дарко Ѓорѓиев\n");
+		sb.append("Љупче Ѓорѓиев\n");
 		tvAbout.setText(sb.toString());
 
 		Animation animation = AnimationUtils.loadAnimation(

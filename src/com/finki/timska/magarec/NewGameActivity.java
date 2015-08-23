@@ -25,13 +25,13 @@ public class NewGameActivity extends Activity {
 	static final int PLAYER_TIME_REQUEST = 1010; // The request code
 
 	final TextView[] tvs = new TextView[4];
-	final ImageButton[] imgBtns = new ImageButton[4];
+	final ImageButton[] imgBtns = new ImageButton[5];
 	Hashtable<Integer, String> htCards = new Hashtable<Integer, String>();
 
-	String[] p1Cards = new String[4];
-	String[] p2Cards = new String[4];
-	String[] p3Cards = new String[4];
-	String[] p4Cards = new String[4];
+	String[] p1Cards = new String[5];
+	String[] p2Cards = new String[5];
+	String[] p3Cards = new String[5];
+	String[] p4Cards = new String[5];
 
 	Integer p1Letters = 0;
 	Integer p2Letters = 0;
@@ -41,28 +41,24 @@ public class NewGameActivity extends Activity {
 	String[] letters = { "", "M", "MA", "MAG", "MAGA", "MAGAR", "MAGARE",
 			"MAGAREC" };
 
-	final Integer[] imgBtnIds = new Integer[4];
+	final Integer[] imgBtnIds = new Integer[5];
 	final ArrayList<Integer> cardList = new ArrayList<Integer>();
 
-	@SuppressLint("NewApi")
+	// odlucuva koj e delitel t.e. posleden, igracot desno dobiva 5 karti (prv)
+	// 0 = prv, 1 = vtor, ..., 3 = cetvrt
+	int delitel = new Random().nextInt(4);
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		View decorView = getWindow().getDecorView();
-		// Hide the status bar.
-		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-		decorView.setSystemUiVisibility(uiOptions);
-		// Remember that you should never show the action bar if the
-		// status bar is hidden, so hide that too if necessary.
-
-		setContentView(R.layout.activity_new_game);
 		getActionBar().hide();
+		setContentView(R.layout.activity_new_game);
+
 		setup();
 		getCardList();
 		dealCards();
 		try {
-			checkCurrentState();
+			// checkCurrentState();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,10 +67,10 @@ public class NewGameActivity extends Activity {
 
 	float playerTime = -1;
 
-	public void checkCurrentState() throws Exception {
+	// index of winner, if any
+	int indexWinner = -1;
 
-		// index of winner, if any
-		int indexWinner = -1;
+	public void checkCurrentState() throws Exception {
 
 		// check p1 cards; are they equal
 		for (int i = 0; i < 3; i++) {
@@ -139,8 +135,10 @@ public class NewGameActivity extends Activity {
 
 			Intent intent = new Intent(this, PlayerTimeActivity.class);
 			startActivityForResult(intent, PLAYER_TIME_REQUEST);
+			Log.d("[playerto,e", String.format("%.2f", playerTime));
 
-			float indexLoser[] = { (r.nextFloat() * 9) + 1, (r.nextFloat() * 9) + 1 };
+			float indexLoser[] = { (r.nextFloat() * 9) + 1,
+					(r.nextFloat() * 9) + 1 };
 			// indexLoser[0] == p3, indexLoser[1] == p4, indexWinner == p2
 			if (indexLoser[0] >= indexLoser[1] && indexLoser[0] >= playerTime) {
 				p3Letters++;
@@ -152,7 +150,8 @@ public class NewGameActivity extends Activity {
 			}
 			Log.d("times",
 					String.format("%.2f %.2f", indexLoser[0], indexLoser[1]));
-			wonRound(indexWinner);
+
+			// wonRound(indexWinner);
 		} else if (indexWinner == 2) {
 			Intent intent = new Intent(this, PlayerTimeActivity.class);
 			startActivityForResult(intent, PLAYER_TIME_REQUEST);
@@ -168,7 +167,7 @@ public class NewGameActivity extends Activity {
 			} else {
 				p1Letters++;
 			}
-			wonRound(indexWinner);
+			// wonRound(indexWinner);
 		} else if (indexWinner == 3) {
 			Intent intent = new Intent(this, PlayerTimeActivity.class);
 			startActivityForResult(intent, PLAYER_TIME_REQUEST);
@@ -184,7 +183,7 @@ public class NewGameActivity extends Activity {
 			} else {
 				p1Letters++;
 			}
-			wonRound(indexWinner);
+			// wonRound(indexWinner);
 		} else if (indexWinner == -1) {
 			// no one has 4 equal cards, keep playing
 		}
@@ -198,6 +197,7 @@ public class NewGameActivity extends Activity {
 				try {
 					playerTime = Float.parseFloat(data.getStringExtra("pTime"));
 					Log.d("time", String.format("%.2f", playerTime));
+					wonRound(indexWinner);
 
 				} catch (NumberFormatException nfe) {
 					Log.d("nfe", nfe.getMessage());
@@ -213,7 +213,7 @@ public class NewGameActivity extends Activity {
 	public void wonRound(int indexWinner) {
 		// 1. Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(this,
-				android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+				android.R.style.Theme_Black_NoTitleBar);
 
 		// Add the buttons
 		builder.setPositiveButton(R.string.cont,
@@ -244,9 +244,7 @@ public class NewGameActivity extends Activity {
 
 		// 3. Get the AlertDialog from create()
 		AlertDialog dialog = builder.create();
-		// dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.show();
-		getActionBar().hide();
 	}
 
 	boolean cardSelected = false;
@@ -288,16 +286,15 @@ public class NewGameActivity extends Activity {
 
 		Integer key = -1;
 
-		p2Cards[0] = htCards.get(2130837582);
-		p2Cards[1] = htCards.get(2130837574);
-		p2Cards[2] = htCards.get(2130837578);
-		p2Cards[3] = htCards.get(2130837586);
-
-		htCards.remove(2130837582);
-		htCards.remove(2130837574);
-		htCards.remove(2130837578);
-		htCards.remove(2130837586);
-
+		/*
+		 * p2Cards[0] = htCards.get(2130837594); p2Cards[1] =
+		 * htCards.get(2130837590); p2Cards[2] = htCards.get(2130837586);
+		 * p2Cards[3] = htCards.get(2130837582);
+		 * 
+		 * htCards.remove(2130837594); htCards.remove(2130837590);
+		 * htCards.remove(2130837586); htCards.remove(2130837582);
+		 */
+		
 		for (int i = 0; i < 4; i++) {
 
 			// p1 cards
@@ -306,7 +303,6 @@ public class NewGameActivity extends Activity {
 				key = (Integer) keys[new Random().nextInt(keys.length)];
 				if (htCards.containsKey(key)) {
 					imgBtns[i].setBackgroundResource(key);
-					System.out.println(key + htCards.get(key));
 					p1Cards[i] = htCards.get(key);
 					htCards.remove(key);
 					break;
@@ -314,11 +310,14 @@ public class NewGameActivity extends Activity {
 			}
 
 			// p2 cards
-			/*
-			 * while (!htCards.containsKey(key)) { key = (Integer) keys[new
-			 * Random().nextInt(keys.length)]; if (htCards.containsKey(key)) {
-			 * p2Cards[i] = htCards.get(key); htCards.remove(key); break; } }
-			 */
+			while (!htCards.containsKey(key)) {
+				key = (Integer) keys[new Random().nextInt(keys.length)];
+				if (htCards.containsKey(key)) {
+					p2Cards[i] = htCards.get(key);
+					htCards.remove(key);
+					break;
+				}
+			}
 
 			// p3 cards
 			while (!htCards.containsKey(key)) {
@@ -340,6 +339,39 @@ public class NewGameActivity extends Activity {
 				}
 			}
 		}
+
+		String fifthCard = null;
+		while (!htCards.containsKey(key)) {
+			key = (Integer) keys[new Random().nextInt(keys.length)];
+			if (htCards.containsKey(key)) {
+				fifthCard = htCards.get(key);
+				htCards.remove(key);
+				break;
+			}
+		}
+		switch (delitel) {
+		case 3:
+			p1Cards[4] = fifthCard;
+			imgBtns[4].setBackgroundResource(key);
+			break;
+		case 1:
+			p2Cards[4] = fifthCard;
+			imgBtns[4].setVisibility(View.INVISIBLE);
+			break;
+		case 2:
+			p3Cards[4] = fifthCard;
+			imgBtns[4].setEnabled(false);
+			imgBtns[4].setVisibility(View.INVISIBLE);
+			break;
+		case 0:
+			p4Cards[4] = fifthCard;
+			imgBtns[4].setEnabled(false);
+			imgBtns[4].setVisibility(View.INVISIBLE);
+			break;
+		default:
+			break;
+		}
+		Log.d("delitel", String.format("%d", delitel));
 	}
 
 	public void setup() {
@@ -359,7 +391,8 @@ public class NewGameActivity extends Activity {
 		imgBtns[1] = (ImageButton) findViewById(R.id.imageButton02);
 		imgBtns[2] = (ImageButton) findViewById(R.id.imageButton03);
 		imgBtns[3] = (ImageButton) findViewById(R.id.imageButton04);
-		for (int i = 0; i < 4; i++) {
+		imgBtns[4] = (ImageButton) findViewById(R.id.imageButton05);
+		for (int i = 0; i < 5; i++) {
 			imgBtnIds[i] = imgBtns[i].getId();
 		}
 	}
