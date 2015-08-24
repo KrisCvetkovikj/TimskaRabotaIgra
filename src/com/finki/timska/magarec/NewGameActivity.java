@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class NewGameActivity extends Activity {
@@ -25,7 +26,17 @@ public class NewGameActivity extends Activity {
 	static final int PLAYER_TIME_REQUEST = 1010; // The request code
 
 	final TextView[] tvs = new TextView[4];
-	final ImageButton[] imgBtns = new ImageButton[5];
+
+	final ImageButton[] imgBtnsP1 = new ImageButton[5];
+
+	ImageView imgViewP2C1;
+	ImageView imgViewP3C1;
+	ImageView imgViewP4C1;
+
+	ImageView imgViewP2C5;
+	ImageView imgViewP3C5;
+	ImageView imgViewP4C5;
+
 	Hashtable<Integer, String> htCards = new Hashtable<Integer, String>();
 
 	String[] p1Cards = new String[5];
@@ -261,7 +272,7 @@ public class NewGameActivity extends Activity {
 				currCardId = -1;
 			} else {
 				for (int i = 0; i < 4; i++) {
-					selectCardAnimation(imgBtns[i], 0.0f, 0.0f);
+					selectCardAnimation(imgBtnsP1[i], 0.0f, 0.0f);
 				}
 				currCardId = viewId;
 				selectCardAnimation(view, 0.0f, -20.0f);
@@ -294,7 +305,7 @@ public class NewGameActivity extends Activity {
 		 * htCards.remove(2130837594); htCards.remove(2130837590);
 		 * htCards.remove(2130837586); htCards.remove(2130837582);
 		 */
-		
+
 		for (int i = 0; i < 4; i++) {
 
 			// p1 cards
@@ -302,7 +313,7 @@ public class NewGameActivity extends Activity {
 			while (!htCards.containsKey(key)) {
 				key = (Integer) keys[new Random().nextInt(keys.length)];
 				if (htCards.containsKey(key)) {
-					imgBtns[i].setBackgroundResource(key);
+					imgBtnsP1[i].setBackgroundResource(key);
 					p1Cards[i] = htCards.get(key);
 					htCards.remove(key);
 					break;
@@ -352,26 +363,81 @@ public class NewGameActivity extends Activity {
 		switch (delitel) {
 		case 3:
 			p1Cards[4] = fifthCard;
-			imgBtns[4].setBackgroundResource(key);
+			imgBtnsP1[4].setBackgroundResource(key);
+			imgViewP2C1.setVisibility(View.INVISIBLE);
+			imgViewP3C1.setVisibility(View.INVISIBLE);
+			imgViewP4C1.setVisibility(View.INVISIBLE);
 			break;
 		case 1:
 			p2Cards[4] = fifthCard;
-			imgBtns[4].setVisibility(View.INVISIBLE);
+			imgBtnsP1[4].setEnabled(false);
+			imgBtnsP1[4].setVisibility(View.INVISIBLE);
+			imgViewP2C1.setVisibility(View.INVISIBLE);
+			imgViewP4C1.setVisibility(View.INVISIBLE);
 			break;
 		case 2:
 			p3Cards[4] = fifthCard;
-			imgBtns[4].setEnabled(false);
-			imgBtns[4].setVisibility(View.INVISIBLE);
+			imgBtnsP1[4].setEnabled(false);
+			imgBtnsP1[4].setVisibility(View.INVISIBLE);
+			imgViewP2C1.setVisibility(View.INVISIBLE);
+			imgViewP3C1.setVisibility(View.INVISIBLE);
 			break;
 		case 0:
 			p4Cards[4] = fifthCard;
-			imgBtns[4].setEnabled(false);
-			imgBtns[4].setVisibility(View.INVISIBLE);
+			imgBtnsP1[4].setEnabled(false);
+			imgBtnsP1[4].setVisibility(View.INVISIBLE);
+			imgViewP3C1.setVisibility(View.INVISIBLE);
+			imgViewP4C1.setVisibility(View.INVISIBLE);
 			break;
 		default:
 			break;
 		}
 		Log.d("delitel", String.format("%d", delitel));
+
+		// find and show card 2
+
+		int found = -1; // flag that tells if 2 is found
+		for (int i = 0; i < 4; i++) {
+			if (p1Cards[i].contains("cardclubs2")) {
+				found = 1;
+				break;
+			}
+			
+			if (p2Cards[i].contains("cardclubs2")) {
+				imgViewP2C5.setBackgroundResource(R.drawable.cardclubs2);
+				found = 1;
+				break;
+			}
+			if (p3Cards[i].contains("cardclubs2")) {
+				imgViewP3C5.setBackgroundResource(R.drawable.cardclubs2);
+				found = 1;
+				break;
+			}
+			if (p4Cards[i].contains("cardclubs2")) {
+				imgViewP4C5.setBackgroundResource(R.drawable.cardclubs2);
+				found = 1;
+				break;
+			}
+		}
+
+		// check in fifth card
+		if (found == -1) {
+			switch (delitel) {
+			case 0:
+				imgViewP2C5.setBackgroundResource(R.drawable.cardclubs2);
+				break;
+			case 1:
+				imgViewP3C5.setBackgroundResource(R.drawable.cardclubs2);
+				break;
+			case 2:
+				imgViewP4C5.setBackgroundResource(R.drawable.cardclubs2);
+				break;
+
+			default:
+				break;
+			}
+		}
+
 	}
 
 	public void setup() {
@@ -387,14 +453,23 @@ public class NewGameActivity extends Activity {
 			tvs[i].setTypeface(custom_font);
 		}
 
-		imgBtns[0] = (ImageButton) findViewById(R.id.imageButton01);
-		imgBtns[1] = (ImageButton) findViewById(R.id.imageButton02);
-		imgBtns[2] = (ImageButton) findViewById(R.id.imageButton03);
-		imgBtns[3] = (ImageButton) findViewById(R.id.imageButton04);
-		imgBtns[4] = (ImageButton) findViewById(R.id.imageButton05);
+		imgBtnsP1[0] = (ImageButton) findViewById(R.id.imageButton01);
+		imgBtnsP1[1] = (ImageButton) findViewById(R.id.imageButton02);
+		imgBtnsP1[2] = (ImageButton) findViewById(R.id.imageButton03);
+		imgBtnsP1[3] = (ImageButton) findViewById(R.id.imageButton04);
+		imgBtnsP1[4] = (ImageButton) findViewById(R.id.imageButton05);
 		for (int i = 0; i < 5; i++) {
-			imgBtnIds[i] = imgBtns[i].getId();
+			imgBtnIds[i] = imgBtnsP1[i].getId();
 		}
+
+		imgViewP2C1 = (ImageView) findViewById(R.id.imageViewP2C1);
+		imgViewP3C1 = (ImageView) findViewById(R.id.imageViewP3C1);
+		imgViewP4C1 = (ImageView) findViewById(R.id.imageViewP4C5);
+
+		imgViewP2C5 = (ImageView) findViewById(R.id.imageViewP2C5);
+		imgViewP3C5 = (ImageView) findViewById(R.id.imageViewP3C5);
+		imgViewP4C5 = (ImageView) findViewById(R.id.imageViewP4C1);
+
 	}
 
 	public void getCardList() {

@@ -1,19 +1,19 @@
 # Igra Magarec
-РџСЂРѕРµРєС‚ РїРѕ РїСЂРµРґРјРµС‚РѕС‚ РўРёРјСЃРєР° Р Р°Р±РѕС‚Р° РєР°С РїСЂРѕС„РµСЃРѕСЂ РРіРѕСЂ РњРёС€РєРѕРІСЃРєРё.
+Проект по предметот Тимска Работа кај професор Игор Мишковски.
 
-Р—РёРјСЃРєРё СЃРµРјРµСЃС‚Р°СЂ 2014/15
+Зимски семестар 2014/15
 
-РЈС‡РµСЃРЅРёС†Рё:
+Учесници:
 
->РљСЂРёСЃС‚РёСР°РЅ Р¦РІРµС‚РєРѕРІРёСњ [**@k1ko**](https://github.com/k1ko)
+>Кристијан Цветковиќ [**@k1ko**](https://github.com/k1ko)
 
->РўРѕРјС‡Рµ РљРёСЂРѕРІ [**@TomzK**](https://github.com/TomzK)
+>Томче Киров [**@TomzK**](https://github.com/TomzK)
 
->РќРёРєРѕР»Р° РќРёРєРѕР»РѕРІСЃРєРё [**@TheRaptor**](https://github.com/TheRaptor)
+>Никола Николовски [**@TheRaptor**](https://github.com/TheRaptor)
 
->Р‰СѓРїС‡Рµ РѓРѕСЂС“РёРµРІ [**@ljupche**](https://github.com/ljupche)
+>Љупче Ѓорѓиев [**@ljupche**](https://github.com/ljupche)
 
->Р”Р°СЂРєРѕ РѓРѕСЂС“РёРµРІ [**@darko131228**](https://github.com/darko131228)
+>Дарко Ѓорѓиев [**@darko131228**](https://github.com/darko131228)
 
 
 [http://finki.ukim.mk/mk/home](http://finki.ukim.mk/mk/home)

@@ -92,7 +92,7 @@
             android:layout_marginRight="5dp"
             android:adjustViewBounds="true"
             android:onClick="selectCard" />
-        
+
         <ImageButton
             android:id="@+id/imageButton05"
             android:layout_width="@dimen/normal_card_width"
@@ -102,27 +102,179 @@
             android:onClick="selectCard" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="90dp"
-        android:layout_height="120dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
         android:layout_alignRight="@+id/textView2"
-        android:src="@drawable/cardback_players" />
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8" >
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="90dp"
-        android:layout_height="120dp"
+        <ImageView
+            android:id="@+id/imageViewP2C1"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginTop="40dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_red2" />
+
+        <ImageView
+            android:id="@+id/imageViewP2C2"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_red2" />
+
+        <ImageView
+            android:id="@+id/imageViewP2C3"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_red2" />
+
+        <ImageView
+            android:id="@+id/imageViewP2C4"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_red2" />
+
+        <ImageView
+            android:id="@+id/imageViewP2C5"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_red2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignRight="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:src="@drawable/cardback_players" />
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingBottom="30dp"
+        android:paddingRight="20dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8" >
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="90dp"
-        android:layout_height="120dp"
+        <ImageView
+            android:id="@+id/imageViewP3C1"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_green2" />
+
+        <ImageView
+            android:id="@+id/imageViewP3C2"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_green2" />
+
+        <ImageView
+            android:id="@+id/imageViewP3C3"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_green2" />
+
+        <ImageView
+            android:id="@+id/imageViewP3C4"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_green2" />
+
+        <ImageView
+            android:id="@+id/imageViewP3C5"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="40dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_green2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
-        android:src="@drawable/cardback_players" />
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingBottom="30dp"
+        android:paddingRight="20dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8" >
+
+        <ImageView
+            android:id="@+id/imageViewP4C1"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="40dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_blue2" />
+
+        <ImageView
+            android:id="@+id/imageViewP4C2"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="30dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_blue2" />
+
+        <ImageView
+            android:id="@+id/imageViewP4C3"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_blue2" />
+
+        <ImageView
+            android:id="@+id/imageViewP4C4"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_blue2" />
+
+        <ImageView
+            android:id="@+id/imageViewP4C5"
+            android:layout_width="@dimen/normal_card_width"
+            android:layout_height="@dimen/normal_card_height"
+            android:layout_marginRight="-20dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cardback_blue2" />
+    </LinearLayout>
+
 
 </RelativeLayout>
