@@ -1,19 +1,19 @@
 # Igra Magarec
-œÓÂÍÚ ÔÓ ÔÂ‰ÏÂÚÓÚ “ËÏÒÍ‡ –‡·ÓÚ‡ Í‡º ÔÓÙÂÒÓ »„Ó ÃË¯ÍÓ‚ÒÍË.
+–ü—Ä–æ–µ–∫—Ç –ø–æ –ø—Ä–µ–¥–º–µ—Ç–æ—Ç –¢–∏–º—Å–∫–∞ –†–∞–±–æ—Ç–∞ –∫–∞—ò –ø—Ä–æ—Ñ–µ—Å–æ—Ä –ò–≥–æ—Ä –ú–∏—à–∫–æ–≤—Å–∫–∏.
 
-«ËÏÒÍË ÒÂÏÂÒÚ‡ 2014/15
+–ó–∏–º—Å–∫–∏ —Å–µ–º–µ—Å—Ç–∞—Ä 2014/15
 
-”˜ÂÒÌËˆË:
+–£—á–µ—Å–Ω–∏—Ü–∏:
 
-> ËÒÚËº‡Ì ÷‚ÂÚÍÓ‚Ëù [**@k1ko**](https://github.com/k1ko)
+>–ö—Ä–∏—Å—Ç–∏—ò–∞–Ω –¶–≤–µ—Ç–∫–æ–≤–∏—ú [**@k1ko**](https://github.com/k1ko)
 
->“ÓÏ˜Â  ËÓ‚ [**@TomzK**](https://github.com/TomzK)
+>–¢–æ–º—á–µ –ö–∏—Ä–æ–≤ [**@TomzK**](https://github.com/TomzK)
 
->ÕËÍÓÎ‡ ÕËÍÓÎÓ‚ÒÍË [**@TheRaptor**](https://github.com/TheRaptor)
+>–ù–∏–∫–æ–ª–∞ –ù–∏–∫–æ–ª–æ–≤—Å–∫–∏ [**@TheRaptor**](https://github.com/TheRaptor)
 
->äÛÔ˜Â ÅÓÉËÂ‚ [**@ljupche**](https://github.com/ljupche)
+>–â—É–ø—á–µ –É–æ—Ä—ì–∏–µ–≤ [**@ljupche**](https://github.com/ljupche)
 
->ƒ‡ÍÓ ÅÓÉËÂ‚ [**@darko131228**](https://github.com/darko131228)
+>–î–∞—Ä–∫–æ –É–æ—Ä—ì–∏–µ–≤ [**@darko131228**](https://github.com/darko131228)
 
 
 [http://finki.ukim.mk/mk/home](http://finki.ukim.mk/mk/home)
