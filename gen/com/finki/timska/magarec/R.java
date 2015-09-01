@@ -21,6 +21,8 @@ public final class R {
         public static final int abc_slide_out_top=0x7f040009;
         public static final int card_select=0x7f04000a;
         public static final int fade_in=0x7f04000b;
+        public static final int move=0x7f04000c;
+        public static final int test=0x7f04000d;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1950,32 +1952,31 @@ containing a value of this type.
         public static final int cardback_green3=0x7f020043;
         public static final int cardback_green4=0x7f020044;
         public static final int cardback_green5=0x7f020045;
-        public static final int cardback_players=0x7f020046;
-        public static final int cardback_red1=0x7f020047;
-        public static final int cardback_red2=0x7f020048;
-        public static final int cardback_red3=0x7f020049;
-        public static final int cardback_red4=0x7f02004a;
-        public static final int cardback_red5=0x7f02004b;
-        public static final int cardclubs2=0x7f02004c;
-        public static final int cardclubsa=0x7f02004d;
-        public static final int cardclubsj=0x7f02004e;
-        public static final int cardclubsk=0x7f02004f;
-        public static final int cardclubsq=0x7f020050;
-        public static final int carddiamondsa=0x7f020051;
-        public static final int carddiamondsj=0x7f020052;
-        public static final int carddiamondsk=0x7f020053;
-        public static final int carddiamondsq=0x7f020054;
-        public static final int cardheartsa=0x7f020055;
-        public static final int cardheartsj=0x7f020056;
-        public static final int cardheartsk=0x7f020057;
-        public static final int cardheartsq=0x7f020058;
-        public static final int cardspadesa=0x7f020059;
-        public static final int cardspadesj=0x7f02005a;
-        public static final int cardspadesk=0x7f02005b;
-        public static final int cardspadesq=0x7f02005c;
-        public static final int ic_launcher=0x7f02005d;
-        public static final int notification_template_icon_bg=0x7f02005f;
-        public static final int start_screen=0x7f02005e;
+        public static final int cardback_red1=0x7f020046;
+        public static final int cardback_red2=0x7f020047;
+        public static final int cardback_red3=0x7f020048;
+        public static final int cardback_red4=0x7f020049;
+        public static final int cardback_red5=0x7f02004a;
+        public static final int cardclubs2=0x7f02004b;
+        public static final int cardclubsa=0x7f02004c;
+        public static final int cardclubsj=0x7f02004d;
+        public static final int cardclubsk=0x7f02004e;
+        public static final int cardclubsq=0x7f02004f;
+        public static final int carddiamondsa=0x7f020050;
+        public static final int carddiamondsj=0x7f020051;
+        public static final int carddiamondsk=0x7f020052;
+        public static final int carddiamondsq=0x7f020053;
+        public static final int cardheartsa=0x7f020054;
+        public static final int cardheartsj=0x7f020055;
+        public static final int cardheartsk=0x7f020056;
+        public static final int cardheartsq=0x7f020057;
+        public static final int cardspadesa=0x7f020058;
+        public static final int cardspadesj=0x7f020059;
+        public static final int cardspadesk=0x7f02005a;
+        public static final int cardspadesq=0x7f02005b;
+        public static final int ic_launcher=0x7f02005c;
+        public static final int notification_template_icon_bg=0x7f02005e;
+        public static final int start_screen=0x7f02005d;
     }
     public static final class id {
         public static final int aboutInfo=0x7f09004f;
@@ -2019,7 +2020,7 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f090027;
         public static final int expanded_menu=0x7f090037;
         public static final int fullscreen_content_controls=0x7f090052;
-        public static final int game_logo=0x7f090051;
+        public static final int game_logo=0x7f090050;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
         public static final int howToInfo=0x7f090056;
@@ -2027,11 +2028,11 @@ containing a value of this type.
         public static final int icon=0x7f09002b;
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
-        public static final int imageButton01=0x7f09005b;
-        public static final int imageButton02=0x7f09005c;
-        public static final int imageButton03=0x7f09005d;
-        public static final int imageButton04=0x7f09005e;
-        public static final int imageButton05=0x7f09005f;
+        public static final int imageView01=0x7f09005b;
+        public static final int imageView02=0x7f09005c;
+        public static final int imageView03=0x7f09005d;
+        public static final int imageView04=0x7f09005e;
+        public static final int imageView05=0x7f09005f;
         public static final int imageViewP2C1=0x7f090060;
         public static final int imageViewP2C2=0x7f090061;
         public static final int imageViewP2C3=0x7f090062;
@@ -2085,7 +2086,7 @@ containing a value of this type.
         public static final int src_atop=0x7f090016;
         public static final int src_in=0x7f090017;
         public static final int src_over=0x7f090018;
-        public static final int start_name=0x7f090050;
+        public static final int start_name=0x7f090051;
         public static final int status_bar_latest_event_content=0x7f090073;
         public static final int submit_area=0x7f09004b;
         public static final int tabMode=0x7f09000c;

@@ -59,47 +59,44 @@
         android:layout_alignLeft="@+id/textView1"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
         android:paddingTop="20dp" >
 
-        <ImageButton
-            android:id="@+id/imageButton01"
+        <ImageView
+            android:id="@+id/imageView01"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
             android:layout_marginRight="5dp"
-            android:adjustViewBounds="true"
-            android:onClick="selectCard" />
+            android:adjustViewBounds="true" />
 
-        <ImageButton
-            android:id="@+id/imageButton02"
+        <ImageView
+            android:id="@+id/imageView02"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
             android:layout_marginRight="5dp"
-            android:adjustViewBounds="true"
-            android:onClick="selectCard" />
+            android:adjustViewBounds="true" />
 
-        <ImageButton
-            android:id="@+id/imageButton03"
+        <ImageView
+            android:id="@+id/imageView03"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
             android:layout_marginRight="5dp"
-            android:adjustViewBounds="true"
-            android:onClick="selectCard" />
+            android:adjustViewBounds="true" />
 
-        <ImageButton
-            android:id="@+id/imageButton04"
+        <ImageView
+            android:id="@+id/imageView04"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
             android:layout_marginRight="5dp"
-            android:adjustViewBounds="true"
-            android:onClick="selectCard" />
+            android:adjustViewBounds="true" />
 
-        <ImageButton
-            android:id="@+id/imageButton05"
+        <ImageView
+            android:id="@+id/imageView05"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
             android:layout_marginRight="5dp"
-            android:adjustViewBounds="true"
-            android:onClick="selectCard" />
+            android:adjustViewBounds="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,14 +108,16 @@
         android:clipToPadding="false"
         android:paddingLeft="30dp"
         android:paddingTop="20dp"
-        android:scaleX="0.8"
-        android:scaleY="0.8" >
+        android:layout_marginBottom="-40dp"
+        android:layout_marginRight="-40dp"
+        android:scaleX="0.65"
+        android:scaleY="0.65" >
 
         <ImageView
             android:id="@+id/imageViewP2C1"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
-            android:layout_marginLeft="-25dp"
+            android:layout_marginLeft="-20dp"
             android:layout_marginTop="40dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cardback_red2" />
@@ -127,7 +126,7 @@
             android:id="@+id/imageViewP2C2"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
-            android:layout_marginLeft="-25dp"
+            android:layout_marginLeft="-20dp"
             android:layout_marginTop="30dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cardback_red2" />
@@ -136,7 +135,7 @@
             android:id="@+id/imageViewP2C3"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
-            android:layout_marginLeft="-25dp"
+            android:layout_marginLeft="-20dp"
             android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cardback_red2" />
@@ -145,7 +144,7 @@
             android:id="@+id/imageViewP2C4"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
-            android:layout_marginLeft="-25dp"
+            android:layout_marginLeft="-20dp"
             android:layout_marginTop="10dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cardback_red2" />
@@ -154,7 +153,7 @@
             android:id="@+id/imageViewP2C5"
             android:layout_width="@dimen/normal_card_width"
             android:layout_height="@dimen/normal_card_height"
-            android:layout_marginLeft="-25dp"
+            android:layout_marginLeft="-20dp"
             android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cardback_red2" />
@@ -169,8 +168,10 @@
         android:clipToPadding="false"
         android:paddingBottom="30dp"
         android:paddingRight="20dp"
-        android:scaleX="0.8"
-        android:scaleY="0.8" >
+        android:layout_marginTop="-30dp"
+        android:layout_marginRight="-40dp"
+        android:scaleX="0.65"
+        android:scaleY="0.65" >
 
         <ImageView
             android:id="@+id/imageViewP3C1"
@@ -227,8 +228,10 @@
         android:clipToPadding="false"
         android:paddingBottom="30dp"
         android:paddingRight="20dp"
-        android:scaleX="0.8"
-        android:scaleY="0.8" >
+        android:layout_marginTop="-30dp"
+        android:layout_marginLeft="-40dp"
+        android:scaleX="0.65"
+        android:scaleY="0.65" >
 
         <ImageView
             android:id="@+id/imageViewP4C1"

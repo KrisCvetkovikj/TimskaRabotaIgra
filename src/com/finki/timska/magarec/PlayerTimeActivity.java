@@ -1,5 +1,6 @@
 package com.finki.timska.magarec;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import android.annotation.SuppressLint;
@@ -17,7 +18,7 @@ import android.widget.ProgressBar;
 public class PlayerTimeActivity extends Activity {
 
 	Handler handler = new Handler();
-	float playerTime = 0;
+	Double playerTime = 0.0;
 	int progressStatus = 0;
 
 	Button tapButton;
@@ -33,7 +34,6 @@ public class PlayerTimeActivity extends Activity {
 		progBar = (ProgressBar) findViewById(R.id.progBar);
 
 		final long playerStartTime = System.nanoTime();
-		Log.d("pTimeStart", String.format("%d", playerStartTime));
 
 		// Start long running operation in a background thread
 		new Thread(new Runnable() {
@@ -51,17 +51,17 @@ public class PlayerTimeActivity extends Activity {
 					handler.post(new Runnable() {
 						public void run() {
 							progBar.setProgress(currentProgress);
-							Log.d("pbarProg",
-									String.format("%d", progBar.getProgress()));
+							//Log.d("pbarProg", String.format("%d", progBar.getProgress()));
 						}
 					});
 
 					if (progBar.getProgress() >= 100) {
-						playerTime = ((float) (System.nanoTime()  - playerStartTime)) / 1000000000;
-						Log.d("pTimeEnd", String.format("%.2f", playerTime));
+						playerTime = (System.nanoTime()  - playerStartTime) * 1.00 / 1000000000;
+						DecimalFormat df = new DecimalFormat("0.00");
+						Log.d("pTimeEnd", df.format(playerTime));
 
 						Intent returnIntent = new Intent();
-						returnIntent.putExtra("pTime", Float.toString(playerTime));
+						returnIntent.putExtra("pTime", Double.toString(playerTime));
 						setResult(RESULT_OK, returnIntent);
 						finish();
 					}
