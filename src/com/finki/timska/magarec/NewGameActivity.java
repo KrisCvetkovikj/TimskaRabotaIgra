@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -21,11 +22,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -85,12 +83,13 @@ public class NewGameActivity extends Activity {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		try {
+		swiping();
+		/*try {
 			checkCurrentState();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	Double playerTime = -1.0;
@@ -357,25 +356,28 @@ public class NewGameActivity extends Activity {
 
 	public void nextRound() throws InterruptedException {
 		//recreate();
+		//setContentView(R.layout.activity_new_game);
 		if (delitel == 3)
 			delitel = 0;
 		else
 			delitel++;
-		swiping();
+		
+		
 		getCardList();
 		dealCards();
-
+		indexWinner = -1;
 		Log.d("p1letters", String.format("%d", p1Letters));
 		Log.d("p2letters", String.format("%d", p2Letters));
 		Log.d("p3letters", String.format("%d", p3Letters));
 		Log.d("p4letters", String.format("%d", p4Letters));
 
-		try {
+		swiping();
+		/*try {
 			checkCurrentState();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.getLocalizedMessage();
-		}
+		}*/
 	}
 
 	public void dealCards() throws InterruptedException {
@@ -384,7 +386,17 @@ public class NewGameActivity extends Activity {
 		// Get a random entry from the hashtable.
 		//
 		Object[] keys = htCards.keySet().toArray();
-
+		List<Object> toShuffle = new ArrayList<Object>();
+		
+		for (int i = 0; i < keys.length; i++) {
+			toShuffle.add(keys[i]);
+		}
+		
+		Collections.shuffle(toShuffle);
+		
+		keys = toShuffle.toArray();
+		
+		
 		Integer key = -1;
 
 		/*
@@ -576,8 +588,6 @@ public class NewGameActivity extends Activity {
 		imgViewP3C5 = (ImageView) findViewById(R.id.imageViewP3C5);
 		imgViewP4C5 = (ImageView) findViewById(R.id.imageViewP4C1);
 
-		swiping();
-
 	}
 
 	public void swiping() {
@@ -590,6 +600,11 @@ public class NewGameActivity extends Activity {
 						swipeCardAnimation(imgViewsP1[temp]);
 						switchCards(temp);
 						passedCardAnimation(imgViewsP1[temp], temp);
+						try {
+							checkCurrentState();
+						} catch (Exception e) {
+
+						}
 					}
 				}
 
@@ -644,13 +659,6 @@ public class NewGameActivity extends Activity {
 				R.anim.fade_in);
 		test.setFillAfter(true);
 		view.startAnimation(test);
-
-		try {
-			checkCurrentState();
-		} catch (Exception e) {
-
-		}
-		swiping();
 	}
 	
 	public void animCardPlacement(View view, Integer key) {
