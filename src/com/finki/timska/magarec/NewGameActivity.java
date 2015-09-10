@@ -16,6 +16,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -43,7 +45,7 @@ public class NewGameActivity extends Activity {
 	ImageView imgViewP3C5;
 	ImageView imgViewP4C5;
 
-	Hashtable<Integer, String> htCards = new Hashtable<Integer, String>();
+	Hashtable<Integer, String> htCards;
 
 	String[] p1Cards = new String[5];
 	String[] p2Cards = new String[5];
@@ -55,19 +57,21 @@ public class NewGameActivity extends Activity {
 	Integer p3Letters = 0;
 	Integer p4Letters = 0;
 
+	MediaPlayer mp;
+
 	String[] letters = { "", "M", "MA", "MAG", "MAGA", "MAGAR", "MAGARE",
 			"MAGAREC" };
 
 	Integer[] imgBtnIds = new Integer[5];
-	final ArrayList<Integer> cardList = new ArrayList<Integer>();
 
 	final DecimalFormat df = new DecimalFormat("0.00");
 
 	// odlucuva koj e delitel t.e. posleden, igracot desno dobiva 5 karti (prv)
 	// 0 = prv, 1 = vtor, ..., 3 = cetvrt
 
-	// int delitel = new Random().nextInt(4);
-	int delitel = 1;
+	int delitel = new Random().nextInt(4);
+
+	// int delitel = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +88,10 @@ public class NewGameActivity extends Activity {
 			e1.printStackTrace();
 		}
 		swiping();
-		/*try {
-			checkCurrentState();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		/*
+		 * try { checkCurrentState(); } catch (Exception e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
 	}
 
 	Double playerTime = -1.0;
@@ -246,7 +248,6 @@ public class NewGameActivity extends Activity {
 
 		} else if (indexWinner == -1) {
 			// no one has 4 equal cards, keep playing
-			allowSwipe = true;
 		}
 	}
 
@@ -300,13 +301,14 @@ public class NewGameActivity extends Activity {
 
 					addLetter(losingPlayer);
 					wonRound(indexWinner);
+					playerTime = -1.0;
 				} catch (NumberFormatException nfe) {
 					Log.d("nfe", nfe.getMessage());
 				}
 			}
 			if (resultCode == RESULT_CANCELED) {
 				// Write your code if there's no result
-				playerTime = 100.0;
+				playerTime = -1.0;
 			}
 		}
 	}// onActivityResult
@@ -322,7 +324,12 @@ public class NewGameActivity extends Activity {
 					public void onClick(DialogInterface dialog, int id) {
 						// User clicked OK button
 						try {
-							nextRound();
+							if (p1Letters == 7 || p2Letters == 7
+									|| p3Letters == 7 || p1Letters == 7) {
+								finish();
+							} else {
+								nextRound();
+							}
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -334,7 +341,7 @@ public class NewGameActivity extends Activity {
 		// characteristics
 		StringBuilder message = new StringBuilder();
 
-		message.append("Current state:\n");
+		message.append("Score:\n");
 		message.append("Player 1: " + letters[p1Letters] + "\n");
 		message.append("Player 2: " + letters[p2Letters] + "\n");
 		message.append("Player 3: " + letters[p3Letters] + "\n");
@@ -342,11 +349,33 @@ public class NewGameActivity extends Activity {
 
 		builder.setMessage(message.toString());
 
-		if (indexWinner == 0) {
-			builder.setTitle("You won this round!");
+		if (p1Letters == 7 || p2Letters == 7 || p3Letters == 7
+				|| p1Letters == 7) {
+			switch (indexWinner) {
+			case 0:
+				builder.setTitle("Congratulations! You won!");
+				break;
+			case 1:
+				builder.setTitle("Player 2 is the winner!");
+				break;
+			case 2:
+				builder.setTitle("Player 3 is the winner!");
+				break;
+			case 3:
+				builder.setTitle("Player 4 is the winner!");
+				break;
+
+			default:
+				break;
+			}
 		} else {
-			builder.setTitle("Player " + (indexWinner + 1)
-					+ " wins this round!");
+
+			if (indexWinner == 0) {
+				builder.setTitle("You won this round!");
+			} else {
+				builder.setTitle("Player " + (indexWinner + 1)
+						+ " wins this round!");
+			}
 		}
 
 		// 3. Get the AlertDialog from create()
@@ -355,14 +384,17 @@ public class NewGameActivity extends Activity {
 	}
 
 	public void nextRound() throws InterruptedException {
-		//recreate();
-		//setContentView(R.layout.activity_new_game);
+		// recreate();
+
+		imgViewP2C5.setBackgroundResource(R.drawable.cardback_red2);
+		imgViewP3C5.setBackgroundResource(R.drawable.cardback_green2);
+		imgViewP4C5.setBackgroundResource(R.drawable.cardback_blue2);
+		numTurns2 = 0;
 		if (delitel == 3)
 			delitel = 0;
 		else
 			delitel++;
-		
-		
+
 		getCardList();
 		dealCards();
 		indexWinner = -1;
@@ -372,12 +404,10 @@ public class NewGameActivity extends Activity {
 		Log.d("p4letters", String.format("%d", p4Letters));
 
 		swiping();
-		/*try {
-			checkCurrentState();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.getLocalizedMessage();
-		}*/
+		/*
+		 * try { checkCurrentState(); } catch (Exception e) { // TODO
+		 * Auto-generated catch block e.getLocalizedMessage(); }
+		 */
 	}
 
 	public void dealCards() throws InterruptedException {
@@ -387,16 +417,15 @@ public class NewGameActivity extends Activity {
 		//
 		Object[] keys = htCards.keySet().toArray();
 		List<Object> toShuffle = new ArrayList<Object>();
-		
+
 		for (int i = 0; i < keys.length; i++) {
 			toShuffle.add(keys[i]);
 		}
-		
+
 		Collections.shuffle(toShuffle);
-		
+
 		keys = toShuffle.toArray();
-		
-		
+
 		Integer key = -1;
 
 		/*
@@ -415,7 +444,7 @@ public class NewGameActivity extends Activity {
 			while (!htCards.containsKey(key)) {
 				key = (Integer) keys[new Random().nextInt(keys.length)];
 				if (htCards.containsKey(key)) {
-					//imgViewsP1[i].setBackgroundResource(key);
+					// imgViewsP1[i].setBackgroundResource(key);
 					Thread.sleep(50);
 					animCardPlacement(imgViewsP1[i], key);
 					Thread.sleep(50);
@@ -463,24 +492,27 @@ public class NewGameActivity extends Activity {
 				switch (delitel) {
 				case 0:
 					p2Cards[4] = htCards.get(key);
+					imgViewP2C1.setVisibility(View.VISIBLE);
 					imgViewsP1[4].setVisibility(View.INVISIBLE);
 					imgViewP3C1.setVisibility(View.INVISIBLE);
 					imgViewP4C1.setVisibility(View.INVISIBLE);
 					break;
 				case 1:
-					p3Cards[4] = htCards.get(key);;
+					p3Cards[4] = htCards.get(key);
+					imgViewP3C1.setVisibility(View.VISIBLE);
 					imgViewsP1[4].setVisibility(View.INVISIBLE);
 					imgViewP2C1.setVisibility(View.INVISIBLE);
 					imgViewP4C1.setVisibility(View.INVISIBLE);
 					break;
 				case 2:
-					p4Cards[4] = htCards.get(key);;
+					p4Cards[4] = htCards.get(key);
+					imgViewP4C1.setVisibility(View.VISIBLE);
 					imgViewsP1[4].setVisibility(View.INVISIBLE);
 					imgViewP2C1.setVisibility(View.INVISIBLE);
 					imgViewP3C1.setVisibility(View.INVISIBLE);
 					break;
 				case 3:
-					p1Cards[4] = htCards.get(key);;
+					p1Cards[4] = htCards.get(key);
 					imgViewsP1[4].setBackgroundResource(key);
 					imgViewP2C1.setVisibility(View.INVISIBLE);
 					imgViewP3C1.setVisibility(View.INVISIBLE);
@@ -588,7 +620,11 @@ public class NewGameActivity extends Activity {
 		imgViewP3C5 = (ImageView) findViewById(R.id.imageViewP3C5);
 		imgViewP4C5 = (ImageView) findViewById(R.id.imageViewP4C1);
 
+		mp = MediaPlayer.create(getApplicationContext(),
+				R.raw.cardswipe);
 	}
+
+	int numTurns2 = 0;
 
 	public void swiping() {
 		for (int i = 0; i < 4 + ((delitel == 3) ? 1 : 0); i++) {
@@ -596,16 +632,55 @@ public class NewGameActivity extends Activity {
 			imgViewsP1[temp].setOnTouchListener(new OnSwipeTouchListener() {
 
 				public void onSwipeRight() {
-					if (allowSwipe == true) {
-						swipeCardAnimation(imgViewsP1[temp]);
-						switchCards(temp);
-						passedCardAnimation(imgViewsP1[temp], temp);
-						try {
-							checkCurrentState();
-						} catch (Exception e) {
 
+					int id = getResources().getIdentifier(p1Cards[temp],
+							"drawable", getPackageName());
+					String cardName = getResources().getResourceEntryName(id);
+
+					if (numTurns2 < 3) {
+
+						if ("cardclubs2".equals(cardName)) {
+							try {
+								checkCurrentState();
+							} catch (Exception e) {
+
+							}
+						} else {
+							numTurns2++;
+							swipeCardAnimation(imgViewsP1[temp]);
+							switchCards(temp);
+							passedCardAnimation(imgViewsP1[temp], temp);
+							try {
+								checkCurrentState();
+							} catch (Exception e) {
+
+							}
+						}
+					} else {
+						if ("cardclubs2".equals(cardName)) {
+							numTurns2 = 0;
+							swipeCardAnimation(imgViewsP1[temp]);
+							switchCards(temp);
+							passedCardAnimation(imgViewsP1[temp], temp);
+							try {
+								checkCurrentState();
+							} catch (Exception e) {
+
+							}
+						} else {
+							numTurns2++;
+							swipeCardAnimation(imgViewsP1[temp]);
+							switchCards(temp);
+							passedCardAnimation(imgViewsP1[temp], temp);
+							try {
+								checkCurrentState();
+							} catch (Exception e) {
+
+							}
 						}
 					}
+
+					mp.start();
 				}
 
 				public boolean onTouch(View v, MotionEvent event) {
@@ -614,8 +689,6 @@ public class NewGameActivity extends Activity {
 			});
 		}
 	}
-
-	boolean allowSwipe = true;
 
 	private void swipeCardAnimation(View view) {
 		Animation test = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -631,22 +704,61 @@ public class NewGameActivity extends Activity {
 		while (p2RCard == null) {
 			p2RCard = rCard.nextInt(4 + ((delitel == 0) ? 1 : 0));
 		}
+		while ("cardclubs2".equals(p2Cards[p2RCard])) {
+			if (numTurns2 > 3) {
+				imgViewP2C5.setBackgroundResource(R.drawable.cardback_red2);
+				numTurns2 = 0;
+				break;
+			} else {
+				numTurns2++;
+				p2RCard = rCard.nextInt(4 + ((delitel == 0) ? 1 : 0));
+			}
+		}
 		String p2Card = p2Cards[p2RCard];
 		p2Cards[p2RCard] = p1Cards[orderOfCard];
+		if (p2Cards[p2RCard].equals("cardclubs2")) {
+			imgViewP2C5.setBackgroundResource(R.drawable.cardclubs2);
+		}
 
 		Integer p3RCard = rCard.nextInt(4 + ((delitel == 1) ? 1 : 0));
 		while (p3RCard == null) {
 			p3RCard = rCard.nextInt(4 + ((delitel == 1) ? 1 : 0));
 		}
+		while ("cardclubs2".equals(p3Cards[p3RCard])) {
+			if (numTurns2 > 3) {
+				imgViewP3C5.setBackgroundResource(R.drawable.cardback_green2);
+				numTurns2 = 0;
+				break;
+			} else {
+				numTurns2++;
+				p3RCard = rCard.nextInt(4 + ((delitel == 1) ? 1 : 0));
+			}
+		}
 		String p3Card = p3Cards[p3RCard];
 		p3Cards[p3RCard] = p2Card;
+		if (p3Cards[p3RCard].equals("cardclubs2")) {
+			imgViewP3C5.setBackgroundResource(R.drawable.cardclubs2);
+		}
 
 		Integer p4RCard = rCard.nextInt(4 + ((delitel == 2) ? 1 : 0));
 		while (p4RCard == null) {
 			p4RCard = rCard.nextInt(4 + ((delitel == 2) ? 1 : 0));
 		}
+		while ("cardclubs2".equals(p4Cards[p4RCard])) {
+			if (numTurns2 > 3) {
+				imgViewP4C5.setBackgroundResource(R.drawable.cardback_blue2);
+				numTurns2 = 0;
+				break;
+			} else {
+				numTurns2++;
+				p4RCard = rCard.nextInt(4 + ((delitel == 2) ? 1 : 0));
+			}
+		}
 		String p4Card = p4Cards[p4RCard];
 		p4Cards[p4RCard] = p3Card;
+		if (p4Cards[p4RCard].equals("cardclubs2")) {
+			imgViewP4C5.setBackgroundResource(R.drawable.cardclubs2);
+		}
 
 		p1Cards[orderOfCard] = p4Card;
 	}
@@ -660,7 +772,7 @@ public class NewGameActivity extends Activity {
 		test.setFillAfter(true);
 		view.startAnimation(test);
 	}
-	
+
 	public void animCardPlacement(View view, Integer key) {
 		view.setBackgroundResource(key);
 		Animation test = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -674,6 +786,8 @@ public class NewGameActivity extends Activity {
 		final Class<R.drawable> c = R.drawable.class;
 		final Field[] fields = c.getDeclaredFields();
 
+		htCards = new Hashtable<Integer, String>();
+
 		for (int i = 0, max = fields.length; i < max; i++) {
 			final int resourceId;
 			try {
@@ -684,7 +798,6 @@ public class NewGameActivity extends Activity {
 
 			String s = getResources().getResourceName(resourceId);
 			if (s.contains("card") && !s.contains("back")) {
-				cardList.add(resourceId);
 				htCards.put(resourceId, s.substring(34));
 			}
 		}

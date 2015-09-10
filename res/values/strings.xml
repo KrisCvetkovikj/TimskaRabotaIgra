@@ -19,7 +19,7 @@
     <string name="cont">Continue</string>
     <string name="tap">Tap Fast!</string>
     <string name="title_activity_player_time">PlayerTimeActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
+    <string name="title_activity_choose_game">ChooseGameActivity</string>
+	<string name="singleplayer">Single Player</string>
+	<string name="multiplayer">Multi Player</string>
 </resources>

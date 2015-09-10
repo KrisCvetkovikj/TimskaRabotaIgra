@@ -59,9 +59,9 @@
         android:layout_alignLeft="@+id/textView1"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:paddingTop="20dp"
         android:scaleX="0.9"
-        android:scaleY="0.9"
-        android:paddingTop="20dp" >
+        android:scaleY="0.9" >
 
         <ImageView
             android:id="@+id/imageView01"
@@ -104,12 +104,12 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
         android:layout_alignRight="@+id/textView2"
+        android:layout_marginBottom="-40dp"
+        android:layout_marginRight="-40dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:paddingLeft="30dp"
         android:paddingTop="20dp"
-        android:layout_marginBottom="-40dp"
-        android:layout_marginRight="-40dp"
         android:scaleX="0.65"
         android:scaleY="0.65" >
 
@@ -164,12 +164,12 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/textView3"
         android:layout_below="@+id/textView3"
+        android:layout_marginRight="-40dp"
+        android:layout_marginTop="-30dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:paddingBottom="30dp"
         android:paddingRight="20dp"
-        android:layout_marginTop="-30dp"
-        android:layout_marginRight="-40dp"
         android:scaleX="0.65"
         android:scaleY="0.65" >
 
@@ -224,12 +224,12 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
+        android:layout_marginLeft="-40dp"
+        android:layout_marginTop="-30dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:paddingBottom="30dp"
         android:paddingRight="20dp"
-        android:layout_marginTop="-30dp"
-        android:layout_marginLeft="-40dp"
         android:scaleX="0.65"
         android:scaleY="0.65" >
 
@@ -278,6 +278,5 @@
             android:adjustViewBounds="true"
             android:background="@drawable/cardback_blue2" />
     </LinearLayout>
-
 
 </RelativeLayout>
